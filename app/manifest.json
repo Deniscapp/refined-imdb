@@ -13,8 +13,22 @@
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
+  },"content_scripts": [
+  {
+    "matches": ["http://www.imdb.com/*"],
+    "js": ["scripts/jquery-3.0.0.min.js","scripts/materialize.min.js","scripts/icons.js","scripts/external-content.js",
+      "scripts/script.js"],
+    "run_at": "document_start"
   },
-  "permissions": [],
+  {
+    "matches": ["http://www.imdb.com/title/*"],
+    "js": ["scripts/movie-cast.js"],
+    "run_at": "document_end"
+  }
+],
+  "permissions": [
+    "tabs"
+  ],
   "page_action": {
     "default_icon": {
       "19": "images/icon-19.png",
