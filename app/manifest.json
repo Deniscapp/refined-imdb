@@ -22,7 +22,7 @@
   },
   {
     "matches": ["http://www.imdb.com/title/*"],
-    "js": ["scripts/movie-cast.js"],
+    "js": ["scripts/movie-cast.js","scripts/bottom-info.js"],
     "run_at": "document_end"
   }
 ],
