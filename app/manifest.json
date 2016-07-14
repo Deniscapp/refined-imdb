@@ -36,5 +36,8 @@
     },
     "default_title": "refined imdb",
     "default_popup": "popup.html"
-  }
+  },
+  "web_accessible_resources": [
+    "fonts/*"
+  ]
 }
