@@ -45,15 +45,52 @@ $(collapsibleBodyTechDetails).append(titleDetailsContent);
 $(collapsibleTechDetails).append(collapsibleHeaderTechDetails, collapsibleBodyTechDetails);
 
 $(titleDetails).remove();
-$(collapsible).append(collapsibleStoryLine, collapsibleTechDetails);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+var didYouKnow = $("#titleDidYouKnow");
+console.log($(didYouKnow).children()[1]);
+var didYouKnowContent = $(didYouKnow).children();
+
+var collapsibleDidYouKnow = document.createElement("li");
+
+var collapsibleHeaderDidYouKnow = document.createElement("div");
+
+$(collapsibleHeaderDidYouKnow).addClass("collapsible-header");
+$(collapsibleHeaderDidYouKnow).html("<i class='material-icons'>announcement</i> "+ $($(didYouKnow).children()[1]).html());
+
+var collapsibleBodyDidYouKnow = document.createElement("div");
+$(collapsibleBodyDidYouKnow).addClass("collapsible-body");
+$(collapsibleBodyDidYouKnow).append(didYouKnowContent);
+
+$(collapsibleDidYouKnow).append(collapsibleHeaderDidYouKnow, collapsibleBodyDidYouKnow);
+
+$(didYouKnow).remove();
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+$(collapsible).append(collapsibleStoryLine, collapsibleTechDetails, collapsibleDidYouKnow);
+
 
 $(collapsibleBodyTechDetails).css({'padding-left':'1.5em'});
 
 $(collapsibleBodyStoryLine).css({'padding-left':'1.5em'});
 
+$(collapsibleBodyDidYouKnow).css({'padding-left':'1.5em'});
+
 $("p").each(function () {
   this.style.setProperty('padding','0em',"important")
+});
+
+$("li").each(function () {
+  this.style.setProperty('margin-bottom','0em',"important")
+});
+
+var editIcon = $('.rightcornerlink').children();
+
+$(editIcon).each(function () {
+  if($(this).html() == 'Edit') {
+      $(this).html('<i class="material-icons">edit</i>');
+      $(this).parent().css({'position':'relative','top':'1.4em'})
+  }
 });
 
