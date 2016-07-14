@@ -1,0 +1,21 @@
+.follow-facebook, .follow-twitter, .follow-instagram {
+  display: inline-block !important;
+  font: normal normal normal 14px/1 FontAwesome !important;
+  font-size: 3em !important;
+  text-rendering: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}
+
+.follow-facebook::before {
+  content: "\f082" !important;
+}
+
+.follow-twitter::before {
+  content: "\f081" !important;
+}
+
+.follow-instagram::before {
+  content: "\f16d" !important;
+}
