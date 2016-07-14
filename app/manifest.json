@@ -16,8 +16,11 @@
   },"content_scripts": [
   {
     "matches": ["http://www.imdb.com/*"],
-    "js": ["scripts/jquery-3.0.0.min.js","scripts/materialize.min.js","scripts/icons.js","scripts/external-content.js",
-      "scripts/script.js"],
+    "js": ["scripts/jquery-3.0.0.min.js","scripts/materialize.min.js","scripts/icons.js","scripts/external-content.js"],
+      "css": [
+        "css/font-awesome.css",
+        "css/style.css"
+      ],
     "run_at": "document_start"
   },
   {
@@ -36,5 +39,8 @@
     },
     "default_title": "refined imdb",
     "default_popup": "popup.html"
-  }
+  },
+  "web_accessible_resources": [
+    "fonts/*"
+  ]
 }
