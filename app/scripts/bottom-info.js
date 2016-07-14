@@ -1,81 +1,34 @@
 
 'use strict';
 
-$('.collapsible').collapsible({
-  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-});
-var collapsible = $("#movie-info"); // Collapsible for all bottom info content
+var articles = $('.article');
+var collapsible = $("#movie-info");
+var icons = ['','','info','settings','announcement','question_answer','star_rate','message'];
+for(var i=2; i<articles.length-1; i++){
 
-// Storyline section
-var storyLine = $("#titleStoryLine");
-var storyLineContent = $(storyLine).children();
+  var articleContent = $(articles[i]).children();
 
+  var collapsibleArticle = document.createElement("li");
 
-var collapsibleStoryLine = document.createElement("li");
+  var collapsibleHeaderArticle = document.createElement("div");
 
-var collapsibleHeaderStoryLine = document.createElement("div");
+  $(collapsibleHeaderArticle).addClass("collapsible-header");
+  $(collapsibleHeaderArticle).html('<i class="material-icons">'+ icons[i] +'</i>'+(($(articles[i]).find("h2"))).html());
 
-$(collapsibleHeaderStoryLine).addClass("collapsible-header");
-$(collapsibleHeaderStoryLine).html("<i class='material-icons'>info</i> "+"Storyline Information");
+  var collapsibleBodyArticle = document.createElement("div");
+  $(collapsibleBodyArticle).addClass("collapsible-body");
+  $(collapsibleBodyArticle).append(articleContent);
 
-var collapsibleBodyStoryLine = document.createElement("div");
-$(collapsibleBodyStoryLine).addClass("collapsible-body");
-$(collapsibleBodyStoryLine).append(storyLineContent);
+  $(articles[i]).remove();
 
+  $(collapsibleArticle).append(collapsibleHeaderArticle, collapsibleBodyArticle);
+  console.log(collapsibleArticle);
 
-$(storyLine).remove();
-$(collapsibleStoryLine).append(collapsibleHeaderStoryLine, collapsibleBodyStoryLine);
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//Technical details section
-var titleDetails = $("#titleDetails");
-var titleDetailsContent = $(titleDetails).children();
-
-var collapsibleTechDetails = document.createElement("li");
-
-var collapsibleHeaderTechDetails = document.createElement("div");
-
-$(collapsibleHeaderTechDetails).addClass("collapsible-header");
-$(collapsibleHeaderTechDetails).html("<i class='material-icons'>settings</i> "+"Technical Details");
-
-var collapsibleBodyTechDetails = document.createElement("div");
-$(collapsibleBodyTechDetails).addClass("collapsible-body");
-$(collapsibleBodyTechDetails).append(titleDetailsContent);
-
-$(collapsibleTechDetails).append(collapsibleHeaderTechDetails, collapsibleBodyTechDetails);
-
-$(titleDetails).remove();
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-var didYouKnow = $("#titleDidYouKnow");
-console.log($(didYouKnow).children()[1]);
-var didYouKnowContent = $(didYouKnow).children();
-
-var collapsibleDidYouKnow = document.createElement("li");
-
-var collapsibleHeaderDidYouKnow = document.createElement("div");
-
-$(collapsibleHeaderDidYouKnow).addClass("collapsible-header");
-$(collapsibleHeaderDidYouKnow).html("<i class='material-icons'>announcement</i> "+ $($(didYouKnow).children()[1]).html());
-
-var collapsibleBodyDidYouKnow = document.createElement("div");
-$(collapsibleBodyDidYouKnow).addClass("collapsible-body");
-$(collapsibleBodyDidYouKnow).append(didYouKnowContent);
-
-$(collapsibleDidYouKnow).append(collapsibleHeaderDidYouKnow, collapsibleBodyDidYouKnow);
-
-$(didYouKnow).remove();
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-$(collapsible).append(collapsibleStoryLine, collapsibleTechDetails, collapsibleDidYouKnow);
+  $(collapsible).append(collapsibleArticle);
+  $(collapsibleBodyArticle).css({'padding-left':'1.5em'});
 
 
-$(collapsibleBodyTechDetails).css({'padding-left':'1.5em'});
-
-$(collapsibleBodyStoryLine).css({'padding-left':'1.5em'});
-
-$(collapsibleBodyDidYouKnow).css({'padding-left':'1.5em'});
+}
 
 $("p").each(function () {
   this.style.setProperty('padding','0em',"important")
